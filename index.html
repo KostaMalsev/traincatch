@@ -51,15 +51,16 @@ let axios = {
   }
 };
 
-const urlRakevet = 'https://www.rail.co.il/apiinfo/api/Plan';
 
+async function getNextTrain(){
+  
+  const urlRakevet = 'https://www.rail.co.il/apiinfo/api/Plan';
+  const resp = await axios.get(urlRakevet);
 
+  console.log(resp);
+}
 
-const resp = await axios.get(urlRakevet);
-
-console.log(resp);
-
-
+getNextTrain();
 
 </script>
 
