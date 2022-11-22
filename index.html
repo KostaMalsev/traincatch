@@ -10,6 +10,7 @@ let axios = {
     return new Promise((resolve, reject) => {
       try {
         var xmlhttp = new XMLHttpRequest();
+        
         xmlhttp.onreadystatechange = function () {
           if (this.readyState == 4 && String(this.status).startsWith('2')) {
             try {
@@ -50,14 +51,15 @@ let axios = {
   }
 };
 
+const urlRakevet = 'https://www.rail.co.il/apiinfo/api/Plan';
 
 
-
-
-
-
-
-
+const resp = await axios.get(urlRakevet);
+    
+      destCrds = {
+        lat: resp.crds[0],
+        lon: resp.crds[1]
+      };
 
 
 
