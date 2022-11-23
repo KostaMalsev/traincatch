@@ -62,8 +62,8 @@ async function getNextTrain(){
   //const urlRakevet = 'https://www.rail.co.il/apiinfo/api/Plan';
   let proxy = 'https://scepter-cors2.herokuapp.com/';
   
-  let date = ''+(new Date().getFullYear()) + (new Date().getMonth() )+ (new Date().getDate());//20221124
-  let hour = (new Date().getHours()) + (new Date().getMinutes());//0600
+  let date = ''+(new Date().getFullYear()) + (new Date().getMonth()+1 % 12 ) + (new Date().getDate());//20221124
+  let hour = ''+(new Date().getHours()) + (new Date().getMinutes());//0600
   
   console.log(date,hour)  
   let str = 'GetRoutes?OId=4600&TId=7300&Date=20221124&Hour=0600&isGoing&=true&IOT=true&c=1669230206330'
@@ -71,9 +71,10 @@ async function getNextTrain(){
   const urlRakevet = `https://www.rail.co.il/apiinfo/api/Plan/GetRoutes?OId=4600&TId=7300&Date=${date}&Hour=${hour}&isGoing=true&IOT=true&&c=1669230206330`;
   
   const resp = await axios.get(proxy + urlRakevet);
-    
-  dbg(JSON.stringify(resp))
-  console.log(JSON.stringify(resp));
+  
+  console.log(resp);  
+  //dbg(JSON.stringify(resp))
+  //console.log(JSON.stringify(resp));
 }
 
 getNextTrain();
