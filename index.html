@@ -3,7 +3,10 @@
 
 <body>
 
+<div class="debug"></div>
+
 <script>
+document.querySelector(".debug").innerHTML = 'test';
 
 let axios = {
   'get': (url, token, noParse) => {
