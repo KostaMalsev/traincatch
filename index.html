@@ -55,9 +55,12 @@ let axios = {
 async function getNextTrain(){
   
   //const urlRakevet = 'https://www.rail.co.il/apiinfo/api/Plan';
+  let proxy = 'https://berrycors.herokuapp.com/';
+    
+    
   const urlRakevet = 'https://www.rail.co.il/apiinfo/api/Plan/Query: %s->%s (%s %s)"';
 
-  const resp = await axios.get(urlRakevet);
+  const resp = await axios.get(proxy+ urlRakevet);
 
   console.log(resp);
 }
