@@ -73,7 +73,7 @@ function toMil(str)
   let m = Number(timr[1]);
   let s = Number(timr[2]);
   
-  console.log( new Date(y,d,m,h,m,s))
+  console.log( new Date(y,d,m,h,m,s));
   return new Date(y,d,m,h,m,s).getMilliseconds();
 }
 
@@ -85,16 +85,15 @@ async function getNextTrain(){
   let date = ''+(new Date().getFullYear()) + (new Date().getMonth()+1 % 12 ) + (new Date().getDate());//20221124
   let hour = ''+(new Date().getHours()) + (new Date().getMinutes());//0600
     
-  console.log(date,hour)  
   let str = 'GetRoutes?OId=4600&TId=7300&Date=20221124&Hour=0600&isGoing&=true&IOT=true&c=1669230206330'
   //Tel aviv hashalom to BeerSheva University
   const urlRakevet = `https://www.rail.co.il/apiinfo/api/Plan/GetRoutes?OId=4600&TId=7300&Date=${date}&Hour=${hour}&isGoing=true&IOT=true&&c=1669230206330`;
   
+  //Get the time table from TelAviv Shalom to BeerSheve Tzafon
   const resp = await axios.get(proxy + urlRakevet);
   
    
   let DepTime = resp.Data.Routes[0].Train[0].DepartureTime;// '23/11/2022 22:51:00'
-  //DirectTrain==true
   
   let relTrains=[];
   
@@ -118,6 +117,7 @@ async function getNextTrain(){
     }
   }
   
+  //Decide what to do:
   if(d<20)
   {
     dbg('Run!!');
