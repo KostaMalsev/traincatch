@@ -65,6 +65,7 @@ async function getNextTrain(){
   let date = ''+(new Date().getFullYear()) + (new Date().getMonth()+1 % 12 ) + (new Date().getDate());//20221124
   let hour = ''+(new Date().getHours()) + (new Date().getMinutes());//0600
   
+  let currTime = hour;
   console.log(date,hour)  
   let str = 'GetRoutes?OId=4600&TId=7300&Date=20221124&Hour=0600&isGoing&=true&IOT=true&c=1669230206330'
   //Tel aviv hashalom to BeerSheva University
@@ -75,6 +76,24 @@ async function getNextTrain(){
    
   let DepTime = resp.Data.Routes[0].Train[0].DepartureTime;// '23/11/2022 22:51:00'
   //DirectTrain==true
+  
+  let relTrains=[];
+  
+  let r=0;
+  for(let r=0;r<resp.Data.Routes.length;r++)
+  {
+    for(let t=0;t<resp.Data.Routes[r].Train.length;t++)
+    {
+      if(relTrains.length < 3 ){
+        let depTime = resp.Data.Routes[r].Train[t].DepartureTime;
+        let inTime = (depTime - currTime) > 15min; //TBD
+        
+        if(inTime)
+          relTrains.push(depTime);
+      }
+    }
+  }
+  
   
   console.log(resp);  
   //dbg(JSON.stringify(resp))
