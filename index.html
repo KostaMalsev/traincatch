@@ -66,8 +66,11 @@ async function getNextTrain(){
   const urlRakevet = 'https://www.rail.co.il/apiinfo/api/Plan/Query: %s->%s (%s %s)"';
 
   dbg(urlRakevet)
+  try{
   const resp = await axios.get(proxy+ urlRakevet);
-
+  }catch(e){
+    dbg(e)
+  }
   dbg(resp)
   console.log(resp);
 }
