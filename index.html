@@ -63,6 +63,7 @@ async function getNextTrain(){
   let proxy = 'https://scepter-cors2.herokuapp.com/';
     
   let str = 'GetRoutes?OId=4600&TId=7300&Date=20221124&Hour=0600&isGoing&=true&IOT=true&c=1669230206330'
+  //Tel aviv hashalom to BeerSheva University
   const urlRakevet = 'https://www.rail.co.il/apiinfo/api/Plan/GetRoutes?OId=4600&TId=7300&Date=20221124&Hour=0600&isGoing=true&IOT=true&&c=1669230206330';
   
   const resp = await axios.get(proxy + urlRakevet);
