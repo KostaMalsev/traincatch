@@ -69,9 +69,9 @@ function toMil(str)
   
   let timr = rss[1];
   let tim = timr.split(':');
-  let h = Number(timr[0]);
-  let min = Number(timr[1]);
-  let s = Number(timr[2]);
+  let h = Number(tim[0]);
+  let min = Number(tim[1]);
+  let s = Number(tim[2]);
   
   console.log( y,d,m,h,min,s);
   return (new Date(y,d,m,h,m,s).getMilliseconds());
