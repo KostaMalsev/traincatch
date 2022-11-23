@@ -87,6 +87,7 @@ async function getNextTrain(){
       if(relTrains.length < 3 ){
         let depTime = resp.Data.Routes[r].Train[t].DepartureTime;
         let inTime = (depTime - currTime) > 15min; //TBD
+        let fast = resp.Data.Routes[0].Train[0].DirectTrain;
         
         if(inTime)
           relTrains.push(depTime);
