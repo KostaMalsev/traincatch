@@ -62,7 +62,7 @@ async function getNextTrain(){
   //const urlRakevet = 'https://www.rail.co.il/apiinfo/api/Plan';
   let proxy = 'https://scepter-cors2.herokuapp.com/';
     
-  let str =  result = '?OId=4600&TId=7300&Date=24112022&Hour=0700' 
+  let str = 'GetRoutes?OId=4600&TId=7300&Date=20221123&Hour=2030&isGoing=true&c=1669230206330'
   const urlRakevet = 'https://www.rail.co.il/apiinfo/api/Plan/'+str;
 
   dbg(urlRakevet)
