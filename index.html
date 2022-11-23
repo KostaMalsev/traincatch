@@ -6,7 +6,9 @@
 <div class="debug"></div>
 
 <script>
-document.querySelector(".debug").innerHTML = 'test';
+function debug(str){
+   document.querySelector(".debug").innerHTML = str;
+}
 
 let axios = {
   'get': (url, token, noParse) => {
@@ -65,6 +67,7 @@ async function getNextTrain(){
 
   const resp = await axios.get(proxy+ urlRakevet);
 
+  
   console.log(resp);
 }
 
