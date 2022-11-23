@@ -64,13 +64,11 @@ async function getNextTrain(){
     
   let str = 'GetRoutes?OId=4600&TId=7300&Date=20221123&Hour=2030&isGoing=true&c=1669230206330'
   const urlRakevet = 'https://www.rail.co.il/apiinfo/api/Plan/'+str;
-
-  dbg(urlRakevet)
   
   const resp = await axios.get(proxy + urlRakevet);
     
   dbg(resp)
-  console.log(resp);
+  console.log(JSON.encode(resp));
 }
 
 getNextTrain();
