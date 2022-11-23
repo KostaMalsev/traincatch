@@ -107,17 +107,26 @@ async function getNextTrain(){
     {
       if(relTrains.length < 3 ){
         let depTime = resp.Data.Routes[r].Train[t].DepartureTime;
-        
-        let inTime = (toMil(depTime) - currTime)/1000/60 > 15; 
+        let d = (toMil(depTime) - currTime);
+        let inTime = d/1000/60 > 15; 
         let fast = resp.Data.Routes[0].Train[0].DirectTrain;
         
         if(inTime)
-          relTrains.push(depTime);
+          relTrains.push({dpT:depTime,d:d);
       }
     }
   }
   
-  
+  if(d<20)
+  {
+    dbg('Run!!');
+  }else{
+    if(d>40){ 
+      dbg('Go shopping');
+        return;
+    }
+    dbg('It's time to go') 
+  }
   console.log(resp);  
   //dbg(JSON.stringify(resp))
   //console.log(JSON.stringify(resp));
