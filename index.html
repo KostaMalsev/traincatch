@@ -73,6 +73,7 @@ function toMil(str)
   let m = Number(timr[1]);
   let s = Number(timr[2]);
   
+  console.log( new Date(y,d,m,h,m,s))
   return new Date(y,d,m,h,m,s).getMilliseconds();
 }
 
