@@ -73,7 +73,7 @@ function toMil(str)
   let min = Number(tim[1]);
   let s = Number(tim[2]);
   
-  console.log( y,d,m,h,min,s);
+  //console.log( y,d,m,h,min,s);
   return (new Date(y,d,m,h,m,s).getMilliseconds());
 }
 
@@ -106,8 +106,10 @@ async function getNextTrain(){
     for(let t=0;t<resp.Data.Routes[r].Train.length;t++)
     {
       if(relTrains.length < 3 ){
+        
         let depTime = resp.Data.Routes[r].Train[t].DepartureTime;
         let d = (toMil(depTime) - currTime);
+        console.log(d)
         let inTime = d/1000/60 > 15; 
         let fast = resp.Data.Routes[0].Train[0].DirectTrain;
         
