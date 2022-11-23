@@ -74,7 +74,7 @@ function toMil(str)
   let s = Number(timr[2]);
   
   console.log( new Date(y,d,m,h,min,s));
-  return new Date(y,d,m,h,m,s).getMilliseconds();
+  return ()new Date(y,d,m,h,m,s).getMilliseconds());
 }
 
 async function getNextTrain(){
