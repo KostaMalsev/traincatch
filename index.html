@@ -56,6 +56,25 @@ let axios = {
   }
 };
 
+function toMil(str)
+{
+  //const theBigDay = new Date(1962, 6, 7, 12); // noon of 1962-07-07 (7th of July 1962, month is 0-indexed)
+  let dt = [];
+  //'23/11/2022 22:51:00'
+  let rss = str.split(' ');
+  let dt = rss[0].split('/');
+  let y = Number(dt[2]);
+  let m = Number(dt[1])
+  let d = Number(dt[0]);
+  
+  let timr = rss[1];
+  let tim = timr.split(':');
+  let h = Number(timr[0]);
+  let m = Number(timr[1]);
+  let s = Number(timr[2]);
+  
+  return new Date(y,d,m,h,m,s).getMilliseconds();
+}
 
 async function getNextTrain(){
   
@@ -64,8 +83,7 @@ async function getNextTrain(){
   
   let date = ''+(new Date().getFullYear()) + (new Date().getMonth()+1 % 12 ) + (new Date().getDate());//20221124
   let hour = ''+(new Date().getHours()) + (new Date().getMinutes());//0600
-  
-  let currTime = hour;
+    
   console.log(date,hour)  
   let str = 'GetRoutes?OId=4600&TId=7300&Date=20221124&Hour=0600&isGoing&=true&IOT=true&c=1669230206330'
   //Tel aviv hashalom to BeerSheva University
@@ -79,6 +97,9 @@ async function getNextTrain(){
   
   let relTrains=[];
   
+  let currTime = new Date().getMilliseconds();
+
+  
   let r=0;
   for(let r=0;r<resp.Data.Routes.length;r++)
   {
@@ -86,7 +107,8 @@ async function getNextTrain(){
     {
       if(relTrains.length < 3 ){
         let depTime = resp.Data.Routes[r].Train[t].DepartureTime;
-        let inTime = (depTime - currTime) > 15min; //TBD
+        
+        let inTime = (toMil(depTime) - currTime)/1000/60 > 15min; //TBD
         let fast = resp.Data.Routes[0].Train[0].DirectTrain;
         
         if(inTime)
