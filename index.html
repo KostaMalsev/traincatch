@@ -72,6 +72,10 @@ async function getNextTrain(){
   
   const resp = await axios.get(proxy + urlRakevet);
   
+   
+  let DepTime = resp.Data.Routes[0].Train[0].DepartureTime;// 
+  //DirectTrain==true
+  
   console.log(resp);  
   //dbg(JSON.stringify(resp))
   //console.log(JSON.stringify(resp));
