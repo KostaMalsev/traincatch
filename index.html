@@ -108,6 +108,7 @@ async function getNextTrain(){
     {
       if(relTrains.length < 3 ){
         
+        console.log('Train:',JSON.stringify(resp.Data.Routes[r].Train[t]))
         let depTime = resp.Data.Routes[r].Train[t].DepartureTime;
         let d = (toMil(depTime) - currTime);
         
