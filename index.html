@@ -119,14 +119,20 @@ async function getNextTrain(){
       }
     }
   }
+  
   console.log(relTrains)
   
+  if(relTrains.length==0)
+  {
+    dbg('No trains - sleep at the office');
+    return;
+  }
   //Decide what to do:
   if(relTrains[0].d<20)
   {
     dbg('Run!!');
   }else{
-    if(d>40){ 
+    if(relTrains[0].d > 40){ 
       dbg('Go shopping');
         return;
     }
