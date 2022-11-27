@@ -113,7 +113,6 @@ async function getNextTrain(){
         
         let depTime = resp.Data.Routes[r].Train[t].DepartureTime;
         let d = (toMil(depTime) - currTime);
-        console.log('d:',depTime,'d:',d)
         
         let inTime = (d/1000/60) > 15; 
         let fast = resp.Data.Routes[r].Train[t].DirectTrain;
@@ -124,7 +123,7 @@ async function getNextTrain(){
     }
   }
   
-  console.log('Relevant trains:',JSON.stringify(relTrains));
+  //console.log('Relevant trains:',JSON.stringify(relTrains));
   
   if(relTrains.length==0)
   {
