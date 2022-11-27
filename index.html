@@ -107,7 +107,7 @@ async function getNextTrain(){
     for(let t=0;t < resp.Data.Routes[r].Train.length;t++)
     {
       
-      console.log('Train:',JSON.stringify(resp.Data.Routes[r]));
+      console.log('Trains:',JSON.stringify(resp.Data.Routes[r]));
 
       if(relTrains.length < 3 ){
         
