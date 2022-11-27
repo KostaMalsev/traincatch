@@ -137,12 +137,12 @@ async function getNextTrain(){
     dbg('Run!!');
   }else{
     if(relTrains[0].d > 40){ 
-      dbg('Go shopping \n','Next train at',relTrains[0].dpT);
+      dbg('Go shopping \n','Next train at:',relTrains[0].dpT);
         return;
     }
     dbg('Its time to go') 
   }
-  console.log(resp);  
+  //console.log(resp);  
   //dbg(JSON.stringify(resp))
   //console.log(JSON.stringify(resp));
 }
