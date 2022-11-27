@@ -79,6 +79,19 @@ function toMil(str)
   
 }
 
+
+function isFast(stops)
+{
+  for(let s=0; s<stops.length; s++)
+  {
+    if(stops[s].StationId.localeCompare("5900"))
+    {
+      return false;
+    }
+  }
+  return true;
+}
+
 async function getNextTrain(){
   
   //const urlRakevet = 'https://www.rail.co.il/apiinfo/api/Plan';
@@ -115,10 +128,15 @@ async function getNextTrain(){
         let d = (toMil(depTime) - currTime);
         
         let inTime = (d/1000/60) > 15; 
-        let fast = resp.Data.Routes[r].Train[t].DirectTrain;
-        
-        if(inTime)
+        //let fast = resp.Data.Routes[r].Train[t].DirectTrain;
+        let fast = isFast(Train[t].StopStations);
+        //Train[t].StopStations[i].StationId == 5900;
+        //id=5900 is Ashkelon
+
+        if(inTime && fast){
+          console.log('Relevant trains:',JSON.stringify(resp.Data.Routes[r].Train[t]));
           relTrains.push({dpT:depTime,d:d});
+        }
       }
     }
   }
@@ -137,14 +155,13 @@ async function getNextTrain(){
     dbg('Run!!');
   }else{
     if(relTrains[0].d > 40){ 
-       dbg('Go shopping... Next train at ' + `${relTrains[0].dpT.split(' ')[1]}`);
-      //dbg(`${JSON.stringify(relTrains)}`)
+      dbg('Go shopping... Next train at ' + `${relTrains[0].dpT.split(' ')[1]}`);
         return;
     }
     dbg('Its time to go') 
   }
   //console.log(resp);  
-  dbg(JSON.stringify(resp))
+  //dbg(JSON.stringify(resp))
   //console.log(JSON.stringify(resp));
 }
 
