@@ -193,7 +193,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 .dialog .subtitle {
   color: #a6a8aa;
-  font-size: 14px;
+  font-size: 50px;/*14*/
   line-height: 20px;
   max-width: 200px;
   text-align: center;
