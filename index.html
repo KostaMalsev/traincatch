@@ -115,7 +115,7 @@ async function getNextTrain(){
         let d = (toMil(depTime) - currTime);
         
         let inTime = d/1000/60 > 15; 
-        let fast = resp.Data.Routes[0].Train[0].DirectTrain;
+        let fast = resp.Data.Routes[r].Train[t].DirectTrain;
         
         if(inTime && fast)
           relTrains.push({dpT:depTime,d:d});
