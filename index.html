@@ -137,7 +137,7 @@ async function getNextTrain(){
     dbg('Run!!');
   }else{
     if(relTrains[0].d > 40){ 
-      dbg('Go shopping \n','Next train at:',relTrains[0].dpT);
+      dbg('Go shopping... Next train at ' + `${relTrains[0].dpT.split(' ')[1]}`);
         return;
     }
     dbg('Its time to go') 
