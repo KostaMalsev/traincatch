@@ -74,7 +74,7 @@ function toMil(str)
   let s = Number(tim[2]);
   
   //console.log('departure time:', new Date(y,m,d,h,min,s));
-  return (new Date(y,m,d,h,min,s).getMilliseconds());
+  return ((new Date(y,m,d,h,min,s)).getMilliseconds());
 }
 
 async function getNextTrain(){
