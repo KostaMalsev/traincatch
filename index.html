@@ -73,8 +73,6 @@ function toMil(str)
   let min = Number(tim[1]);
   let s = Number(tim[2]);
   
-  //console.log('departure time:', new Date(y,m,d,h,min,s));
-  //return ((new Date(y,m,d,h,min,s)).getMilliseconds());
   return Date.parse(new Date(y,m,d,h,min,s));
   
 }
@@ -94,7 +92,6 @@ function isFast(stops)
 
 async function getNextTrain(){
   
-  //const urlRakevet = 'https://www.rail.co.il/apiinfo/api/Plan';
   let proxy = 'https://scepter-cors2.herokuapp.com/';
   
   let date = ''+(new Date().getFullYear()) + (new Date().getMonth()+1 % 12 ) + (new Date().getDate());//20221124
@@ -102,6 +99,7 @@ async function getNextTrain(){
   
   console.log('currTime',hour,date);  
   let str = 'GetRoutes?OId=4600&TId=7300&Date=20221124&Hour=0600&isGoing&=true&IOT=true&c=1669230206330'
+  
   //Tel aviv hashalom to BeerSheva University
   const urlRakevet = `https://www.rail.co.il/apiinfo/api/Plan/GetRoutes?OId=4600&TId=7300&Date=${date}&Hour=${hour}&isGoing=true&IOT=true&&c=1669230206330`;
   
@@ -134,7 +132,7 @@ async function getNextTrain(){
         //id=5900 is Ashkelon
 
         if(inTime && fast){
-          console.log('Relevant trains:',JSON.stringify(resp.Data.Routes[r].Train[t]));
+          //console.log('Relevant trains:',JSON.stringify(resp.Data.Routes[r].Train[t]));
           relTrains.push({dpT:depTime,d:d});
         }
       }
