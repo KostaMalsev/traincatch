@@ -1,1 +1,15 @@
-
+{
+  "name": "traincatch",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "^8.0.0",
+    "chai": "^4.0.0",
+    "jsdom": "^16.0.0"
+  },
+  "scripts": {
+    "test": "mocha test.js"
+  }
+}
